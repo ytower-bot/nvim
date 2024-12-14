@@ -18,16 +18,17 @@ require('keymaps')
 require('settings')
 
 local plugins = {
+	'42Paris/42header',
 	{
 		'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
 		build = ':TSUpdate',
 	},
 
     {
-		'rebelot/kanagawa.nvim', -- Colorscheme
+		'ellisonleao/gruvbox.nvim', -- Colorscheme
 		priority = 9999, -- Make sure to load this before all the other start plugins
 		init = function()
-			vim.cmd.colorscheme('kanagawa')
+			vim.cmd.colorscheme('gruvbox')
 			-- Transparent background
 			vim.cmd('hi normal guibg=none')
 		end,
