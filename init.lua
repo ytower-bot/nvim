@@ -22,6 +22,13 @@ local plugins = {
 	{
 		'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
 		build = ':TSUpdate',
+		config = function()
+			require('nvim-treesitter.configs').setup({
+				highlight = {
+					enable = true,
+				},
+			})
+		end,
 	},
 
     {

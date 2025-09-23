@@ -3,7 +3,17 @@ return {
 	dependencies = {
 		{
 			'williamboman/mason.nvim',
-			opts = {},
+			opts = {
+				cmd =
+				{
+					"clangd",
+					"-I", "include",
+					"-I", "libft",
+					"-Wall",
+					"-Werror",
+					"-Wextra",
+				}
+			},
 		},
 		'williamboman/mason-lspconfig.nvim',
 		'hrsh7th/cmp-nvim-lsp',
