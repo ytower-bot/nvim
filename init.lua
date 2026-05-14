@@ -1,4 +1,9 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.lsp.util._str_utfindex_enc then
+  vim.lsp.util._str_utfindex_enc = function(str, col, enc)
+    return vim.str_utfindex(str, col, enc)
+  end
+end
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -23,7 +28,7 @@ local plugins = {
 		'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
 		build = ':TSUpdate',
 		config = function()
-			require('nvim-treesitter.configs').setup({
+			require('nvim-treesitter.config').setup({
 				highlight = {
 					enable = true,
 				},
@@ -49,4 +54,3 @@ local plugins = {
 local opts = {}
 
 require('lazy').setup(plugins, opts)
-
